@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NO LIMITS</title>
+    <link rel="stylesheet" href="./css/principal.css">
+</head>
+<body>
+    <div id="login-container" class="formulario-google">
+  <h2>Iniciar sesión</h2>
+  <input type="text" id="login-usuario" placeholder="Usuario">
+  <input type="password" id="login-clave" placeholder="Contraseña">
+  <button onclick="iniciarSesion()">Ingresar</button>
+  <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
+</div>
+
+<div id="registro-container" class="formulario-google oculto">
+  <h2>Registrarse</h2>
+  <input type="text" id="registro-usuario" placeholder="Elige un usuario">
+  <input type="password" id="registro-clave" placeholder="Elige una contraseña">
+  <button onclick="registrarse()">Crear cuenta</button>
+  <p>¿Ya tienes cuenta? <a href="#" onclick="mostrarLogin()">Iniciar sesión</a></p>
+</div>
+<div id="contenido" class="oculto">
+   <style>
+        body{
+     background-image : url("img/fondo1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+    </style>
+  <header>
+    <nav class="menu">
+      <ul>
+        <li><a href="./principal.html">Principal</a></li>
+        <li><a href="./entrenamiento.html">Entrenamiento(H-M)</a></li>
+        <li><a href="./alimentacion.html">Dieta Alimenticia(H-M)</a></li>
+        <li><a href="./contacto.html">Contáctanos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1 class="titulo1"> <samp class="brillo">NO LIMITS</samp></h1>
+
+  <div class="contenedor-busqueda">
+  <div class="busqueda">
+      <input type="text" id="busqueda-input" placeholder="Buscar ejercicios...">
+<button onclick="buscar()">🔍</button>
+
+  </div>
+</div>
+  <div class="registro-wrapper">
+  <div class="boton-registrarse-superior">
+    <button onclick="mostrarFormulario()">Registrarse</button>
+    <button onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+  <div id="formulario" class="formulario-google oculto">
+    <h2>Regístrate o Inicia sesión</h2>
+    <form>
+      <input type="text" placeholder="Nombre completo" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <input type="password" placeholder="Contraseña" required>
+      <div class="formulario-botones">
+        <button type="submit">Registrarse</button>
+        <button type="button">Iniciar sesión</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+ <script src="script.js"></script>
+</div>
+</body>
+</html>

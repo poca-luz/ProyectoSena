@@ -1,0 +1,103 @@
+   body {
+      margin: 0;
+      background: url("img/fondo3.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    .titulo-seccion {
+      text-align: center;
+      font-size: 3.5rem;
+      margin-top: 50px;
+      color: #ff1744;
+      text-shadow: 2px 2px 8px black;
+      animation: entrada 1s ease-out;
+    }
+
+    .contenido-alimentacion {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    }
+
+    .bloque-comida {
+      margin-bottom: 40px;
+    }
+
+    .bloque-comida h2 {
+      color: #ff5252;
+      margin-bottom: 10px;
+    }
+
+    .bloque-comida p {
+      line-height: 1.6;
+    }
+
+    .bloque-comida img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .contenido-alimentacion {
+        padding: 20px;
+        margin: 20px;
+      }
+    }
+.menu {
+  background-color:midnightblue;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: #00c853; 
+  color: #000000;
+  box-shadow: 0 0 10px #00e676;
+  transform: scale(1.05);
+}
+.recomendacion-final {
+  background: #00c853;
+  color: black;
+  padding: 15px;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+  animation: parpadeo 1.5s infinite;
+  border-radius: 10px;
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

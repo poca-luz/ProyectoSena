@@ -1,0 +1,145 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-image: url('../img/fondo1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: white;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+}
+
+.titulo {
+  margin: 0;
+  font-size: 3em;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px #000;
+}
+.menu {
+  background-color:midnightblue;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: #00c853; 
+  color: #000000;
+  box-shadow: 0 0 10px #00e676;
+  transform: scale(1.05);
+}
+
+
+
+.formulario-contacto {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.titulo-contacto {
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 40px;
+  color: #ff4081;
+  text-shadow: 2px 2px 8px black;
+  animation: entrada 1s ease-out;
+}
+
+.tarjeta-contacto {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 200, 83, 0.6);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1.5s ease;
+}
+
+.contacto-info h2 {
+  margin-top: 20px;
+  color: #00e676;
+  border-bottom: 2px solid #00e676;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.contacto-info ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.contacto-info li {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.contacto-info li:hover {
+  background: rgba(0, 255, 100, 0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes entrada {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
