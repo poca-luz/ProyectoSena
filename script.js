@@ -1,165 +1,183 @@
-function mostrarFormulario() {
-  const formulario = document.getElementById("formulario");
-  formulario.classList.toggle("oculto");
-}
-function buscar() {
-  const valor = document.getElementById("busqueda-input").value.toLowerCase();
+// Variables globales para el estado de la sesión
+        let usuarioActual = null;
+        let perfilUsuario = {};
 
-  if (valor.includes("entrenamiento") || valor.includes("pesas") || valor.includes("rutina")) {
-    window.location.href = "entrenamiento.html";
-  } else if (valor.includes("dieta") || valor.includes("comida") || valor.includes("alimentación")) {
-    window.location.href = "alimentacion.html";
-  } else if (valor.includes("contacto") || valor.includes("ayuda")) {
-    window.location.href = "contacto.html";
-  } else {
-    alert("No se encontró ningún resultado relacionado.");
-  }
-}
-function mostrarRegistro() {
-  document.getElementById("login-container").classList.add("oculto");
-  document.getElementById("registro-container").classList.remove("oculto");
-}
+        // Función para mostrar modales
+        function mostrarModal(modalId) {
+            // Cerrar otros modales primero
+            const modales = document.querySelectorAll('.modal');
+            modales.forEach(modal => modal.style.display = 'none');
+            
+            // Mostrar el modal solicitado
+            document.getElementById(modalId).style.display = 'flex';
+        }
 
-function mostrarLogin() {
-  document.getElementById("registro-container").classList.add("oculto");
-  document.getElementById("login-container").classList.remove("oculto");
-}
+        // Función para cerrar modales
+        function cerrarModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
 
-function registrarse() {
-  const user = document.getElementById("registro-usuario").value;
-  const pass = document.getElementById("registro-clave").value;
+        // Función de registro
+        function registrarse() {
+            const usuario = document.getElementById('registerUsuario').value;
+            const email = document.getElementById('registerEmail').value;
+            const clave = document.getElementById('registerClave').value;
 
-  if (user && pass) {
-    localStorage.setItem("usuario", user);
-    localStorage.setItem("clave", pass);
-    alert("¡Registro exitoso! Ahora puedes iniciar sesión.");
-    mostrarLogin();
-  } else {
-    alert("Por favor llena todos los campos.");
-  }
-}
+            if (!usuario || !email || !clave) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
 
-function iniciarSesion() {
-  const user = document.getElementById("login-usuario").value;
-  const pass = document.getElementById("login-clave").value;
+            // Crear perfil inicial
+            const perfilInicial = {
+                usuario: usuario,
+                email: email,
+                clave: clave,
+                fullName: '',
+                age: '',
+                weight: '',
+                height: '',
+                goal: '',
+                workoutCount: 0,
+                daysStreak: 0,
+                totalTime: 0,
+                fechaRegistro: new Date().toISOString()
+            };
 
-  const userGuardado = localStorage.getItem("usuario");
-  const passGuardado = localStorage.getItem("clave");
+            // Simular guardado (en una app real, esto iría a una base de datos)
+            usuarioActual = usuario;
+            perfilUsuario = perfilInicial;
 
-  if (user === userGuardado && pass === passGuardado) {
-    document.getElementById("login-container").style.display = "none";
-    document.getElementById("registro-container").style.display = "none";
-    document.getElementById("contenido").style.display = "block";
-  } else {
-    alert("Datos incorrectos");
-  }
-}
-function mostrarEntrenamiento() {
-  const nombre = document.getElementById("nombre").value;
-  const edad = document.getElementById("edad").value;
-  const sexo = document.getElementById("sexo").value;
-  const objetivo = document.getElementById("objetivo").value;
+            cerrarModal('registerModal');
+            mostrarContenido();
+            alert('¡Registro exitoso! Bienvenido a NO LIMITS');
+        }
 
-  if (nombre && edad && sexo && objetivo) {
-    document.getElementById("form-datos").style.display = "none";
-    document.getElementById("contenido-entrenamiento").style.display = "block";
-    return false; 
-  } else {
-    alert("Por favor llena todos los campos.");
-    return false;
-  }
-}
+        // Función de inicio de sesión
+        function iniciarSesion() {
+            const usuario = document.getElementById('loginUsuario').value;
+            const clave = document.getElementById('loginClave').value;
 
+            if (!usuario || !clave) {
+                alert('Por favor ingresa usuario y contraseña');
+                return;
+            }
 
-window.onload = function() {
-  const userGuardado = localStorage.getItem("usuario");
-  const passGuardado = localStorage.getItem("clave");
-  const sesionIniciada = localStorage.getItem("sesionIniciada");
+            // Simular verificación de credenciales
+            if (perfilUsuario.usuario === usuario && perfilUsuario.clave === clave) {
+                usuarioActual = usuario;
+                cerrarModal('loginModal');
+                mostrarContenido();
+            } else {
+                alert('Usuario o contraseña incorrectos');
+            }
+        }
 
-  if (user === userGuardado && pass === passGuardado) {
-  localStorage.setItem("sesionIniciada", "true");
-  document.getElementById("login-container").style.display = "none";
-  document.getElementById("registro-container").style.display = "none";
-  document.getElementById("contenido").style.display = "block";
-}
+        // Función para mostrar el contenido principal
+        function mostrarContenido() {
+            document.getElementById('contenido').classList.remove('oculto');
+            document.getElementById('userNameNav').textContent = usuarioActual || 'Mi Perfil';
+            cargarDatosPerfil();
+        }
 
-};
+        // Función para cargar datos en el perfil
+        function cargarDatosPerfil() {
+            if (perfilUsuario.fullName) {
+                document.getElementById('profileName').textContent = perfilUsuario.fullName;
+                document.getElementById('fullName').value = perfilUsuario.fullName;
+            } else {
+                document.getElementById('profileName').textContent = usuarioActual;
+            }
 
-function mostrarRegistro() {
-  document.getElementById("login-container").classList.add("oculto");
-  document.getElementById("registro-container").classList.remove("oculto");
-}
+            document.getElementById('age').value = perfilUsuario.age || '';
+            document.getElementById('weight').value = perfilUsuario.weight || '';
+            document.getElementById('height').value = perfilUsuario.height || '';
+            document.getElementById('goal').value = perfilUsuario.goal || '';
+            
+            // Actualizar estadísticas
+            document.getElementById('workoutCount').textContent = perfilUsuario.workoutCount || 0;
+            document.getElementById('daysStreak').textContent = perfilUsuario.daysStreak || 0;
+            document.getElementById('totalTime').textContent = perfilUsuario.totalTime || 0;
 
+            // Actualizar avatar basado en el nombre
+            const avatar = document.getElementById('profileAvatar');
+            if (perfilUsuario.fullName) {
+                avatar.textContent = perfilUsuario.fullName.charAt(0).toUpperCase();
+            } else if (usuarioActual) {
+                avatar.textContent = usuarioActual.charAt(0).toUpperCase();
+            }
+        }
 
-function mostrarLogin() {
-  document.getElementById("registro-container").classList.add("oculto");
-  document.getElementById("login-container").classList.remove("oculto");
-}
+        // Función para guardar perfil
+        function guardarPerfil() {
+            perfilUsuario.fullName = document.getElementById('fullName').value;
+            perfilUsuario.age = document.getElementById('age').value;
+            perfilUsuario.weight = document.getElementById('weight').value;
+            perfilUsuario.height = document.getElementById('height').value;
+            perfilUsuario.goal = document.getElementById('goal').value;
 
+            cargarDatosPerfil();
+            cerrarModal('profileModal');
+            alert('¡Perfil actualizado exitosamente!');
+        }
 
-function registrarse() {
-  const usuario = document.getElementById("registro-usuario").value;
-  const clave = document.getElementById("registro-clave").value;
+        // Función de búsqueda mejorada
+        function buscar() {
+            const busqueda = document.getElementById('searchInput').value.toLowerCase();
 
-  if (usuario && clave) {
-    localStorage.setItem("usuarioRegistrado", usuario);
-    localStorage.setItem("claveRegistrada", clave);
-    localStorage.setItem("sesionActiva", "true");
-    mostrarContenido();
-  } else {
-    alert("Por favor completa todos los campos");
-  }
-}
-function iniciarSesion() {
-  const usuario = document.getElementById("login-usuario").value;
-  const clave = document.getElementById("login-clave").value;
+            if (!busqueda) {
+                alert('Por favor ingresa un término de búsqueda');
+                return;
+            }
 
-  const usuarioRegistrado = localStorage.getItem("usuarioRegistrado");
-  const claveRegistrada = localStorage.getItem("claveRegistrada");
+            if (busqueda.includes('entrenamiento') || busqueda.includes('ejercicio') || 
+                busqueda.includes('rutina') || busqueda.includes('pesas')) {
+                window.location.href = 'entrenamiento.html';
+            } else if (busqueda.includes('dieta') || busqueda.includes('alimentacion') || 
+                       busqueda.includes('nutricion') || busqueda.includes('comida')) {
+                window.location.href = 'alimentacion.html';
+            } else if (busqueda.includes('contacto') || busqueda.includes('ayuda') || 
+                       busqueda.includes('soporte')) {
+                window.location.href = 'contacto.html';
+            } else {
+                alert('No se encontraron resultados para "' + busqueda + '". Intenta con: entrenamiento, dieta, o contacto.');
+            }
+        }
 
-  if (usuario === usuarioRegistrado && clave === claveRegistrada) {
-    localStorage.setItem("sesionActiva", "true");
-    mostrarContenido();
-  } else {
-    alert("Usuario o contraseña incorrectos");
-  }
-}
-function mostrarContenido() {
-  document.getElementById("login-container").classList.add("oculto");
-  document.getElementById("registro-container").classList.add("oculto");
-  document.getElementById("contenido").classList.remove("oculto");
-}
-window.onload = function () {
-  if (localStorage.getItem("sesionActiva") === "true") {
-    mostrarContenido();
-  }
-};
-function cerrarSesion() {
-      localStorage.removeItem('usuario');
-      localStorage.removeItem('logueado');
-      window.location.href = "principal.html";
-    }
-  function mostrarEntrenamiento() {
-    const sexo = document.getElementById('sexo').value;
-    const objetivo = document.getElementById('objetivo').value;
+        // Función para cerrar sesión
+        function cerrarSesion() {
+            if (confirm('¿Estás seguro que quieres cerrar sesión?')) {
+                usuarioActual = null;
+                document.getElementById('contenido').classList.add('oculto');
+                cerrarModal('profileModal');
+                mostrarModal('loginModal');
+            }
+        }
 
-    // Ocultar formulario
-    document.getElementById('form-datos').style.display = 'none';
+        // Event listeners para cerrar modales al hacer click fuera
+        window.addEventListener('click', function(event) {
+            const modales = document.querySelectorAll('.modal');
+            modales.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
 
-    // Mostrar el contenedor de entrenamiento
-    document.getElementById('contenido-entrenamiento').style.display = 'block';
+        // Event listener para la tecla Enter en los campos de búsqueda
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        buscar();
+                    }
+                });
+            }
+        });
 
-    // Ocultar todos los bloques
-    const bloques = document.querySelectorAll('.bloque-entrenamiento');
-    bloques.forEach(b => b.style.display = 'none');
-
-    // Mostrar el bloque correcto
-    const idBloque = `${sexo}-${objetivo}`;
-    const bloqueMostrar = document.getElementById(idBloque);
-    if (bloqueMostrar) {
-      bloqueMostrar.style.display = 'block';
-    }
-
-    return false; // Para que no se recargue la página
-  }
-
+        // Inicializar la aplicación
+        window.onload = function() {
+            // Mostrar modal de login al cargar la página
+            mostrarModal('loginModal');
+        };

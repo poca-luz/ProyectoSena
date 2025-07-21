@@ -7,22 +7,167 @@
     <link rel="stylesheet" href="./css/principal.css">
 </head>
 <body>
-    <div id="login-container" class="formulario-google">
-  <h2>Iniciar sesión</h2>
-  <input type="text" id="login-usuario" placeholder="Usuario">
-  <input type="password" id="login-clave" placeholder="Contraseña">
-  <button onclick="iniciarSesion()">Ingresar</button>
-  <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
-</div>
+    <div id="loginModal" class="modal">
+        <div class="modal-content auth-modal">
+            <span class="close" onclick="cerrarModal('loginModal')">&times;</span>
+            <div class="auth-form">
+                <h2>Iniciar Sesión</h2>
+                <div class="form-group">
+                    <input type="text" id="loginUsuario" placeholder="Usuario" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginClave" placeholder="Contraseña" required>
+                </div>
+                <button class="btn" onclick="iniciarSesion()">Ingresar</button>
+                <div class="auth-links">
+                    <p>¿No tienes cuenta? <a href="#" onclick="mostrarModal('registerModal')">Regístrate aquí</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div id="registro-container" class="formulario-google oculto">
-  <h2>Registrarse</h2>
-  <input type="text" id="registro-usuario" placeholder="Elige un usuario">
-  <input type="password" id="registro-clave" placeholder="Elige una contraseña">
-  <button onclick="registrarse()">Crear cuenta</button>
-  <p>¿Ya tienes cuenta? <a href="#" onclick="mostrarLogin()">Iniciar sesión</a></p>
-</div>
-<div id="contenido" class="oculto">
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content auth-modal">
+            <span class="close" onclick="cerrarModal('registerModal')">&times;</span>
+            <div class="auth-form">
+                <h2>Crear Cuenta</h2>
+                <div class="form-group">
+                    <input type="text" id="registerUsuario" placeholder="Usuario" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="registerEmail" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="registerClave" placeholder="Contraseña" required>
+                </div>
+                <button class="btn" onclick="registrarse()">Crear Cuenta</button>
+                <div class="auth-links">
+                    <p>¿Ya tienes cuenta? <a href="#" onclick="mostrarModal('loginModal')">Iniciar sesión</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Perfil -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('profileModal')">&times;</span>
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">👤</div>
+                <h2 id="profileName">Usuario</h2>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value" id="workoutCount">0</div>
+                    <div class="stat-label">Entrenamientos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="daysStreak">0</div>
+                    <div class="stat-label">Días Seguidos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="totalTime">0</div>
+                    <div class="stat-label">Horas Total</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" id="fullName" placeholder="Tu nombre completo">
+            </div>
+            
+            <div class="form-group">
+                <label>Edad</label>
+                <input type="number" id="age" placeholder="Tu edad" min="16" max="80">
+            </div>
+            
+            <div class="form-group">
+                <label>Peso (kg)</label>
+                <input type="number" id="weight" placeholder="Tu peso" min="30" max="200">
+            </div>
+            
+            <div class="form-group">
+                <label>Altura (cm)</label>
+                <input type="number" id="height" placeholder="Tu altura" min="140" max="220">
+            </div>
+            
+            <div class="form-group">
+                <label>Objetivo</label>
+                <select id="goal">
+                    <option value="">Selecciona tu objetivo</option>
+                    <option value="perder">Perder peso</option>
+                    <option value="mantener">Mantener peso</option>
+                    <option value="ganar">Ganar músculo</option>
+                    <option value="resistencia">Mejorar resistencia</option>
+                </select>
+            </div>
+            
+            <button class="btn" onclick="guardarPerfil()">Guardar Perfil</button>
+            <button class="btn" onclick="cerrarSesion()" style="background: linear-gradient(45deg, #666, #999); margin-top: 1rem;">Cerrar Sesión</button>
+        </div>
+    </div>
+
+    <!-- Contenido principal (solo visible cuando hay sesión activa) -->
+    <div id="contenido" class="oculto">
+        <!-- Navegación -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">NO LIMITS</div>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="./entrenamiento.html">Entrenamientos</a></li>
+                    <li><a href="./alimentacion.html">Nutrición</a></li>
+                    <li><a href="./contacto.html">Contacto</a></li>
+                </ul>
+                <div class="user-section">
+                    <button class="profile-btn" onclick="mostrarModal('profileModal')">
+                        <span id="userNameNav">Mi Perfil</span> 👤
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <h1 class="hero-title">NO LIMITS</h1>
+                <p class="hero-subtitle">Supera tus límites. Alcanza tus metas. Transforma tu vida.</p>
+                
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Buscar entrenamientos, dietas, ejercicios...">
+                        <button onclick="buscar()">🔍</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: #ffd700;">¿Qué puedes hacer?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>Entrenamientos Personalizados</h3>
+                    <p>Rutinas diseñadas específicamente para tu nivel y objetivos. Para hombres y mujeres.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🥗</div>
+                    <h3>Planes Nutricionales</h3>
+                    <p>Dietas balanceadas que complementan tu entrenamiento y te ayudan a alcanzar tus metas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Seguimiento de Progreso</h3>
+                    <p>Monitorea tu evolución con estadísticas detalladas y celebra cada logro conseguido.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
    <style>
         body{
      background-image : url("img/fondo1.png");
@@ -30,48 +175,7 @@
     background-size: cover;
   }
     </style>
-  <header>
-    <nav class="menu">
-      <ul>
-        <li><a href="./principal.html">Principal</a></li>
-        <li><a href="./entrenamiento.html">Entrenamiento(H-M)</a></li>
-        <li><a href="./alimentacion.html">Dieta Alimenticia(H-M)</a></li>
-        <li><a href="./contacto.html">Contáctanos</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <h1 class="titulo1"> <samp class="brillo">NO LIMITS</samp></h1>
-
-  <div class="contenedor-busqueda">
-  <div class="busqueda">
-      <input type="text" id="busqueda-input" placeholder="Buscar ejercicios...">
-<button onclick="buscar()">🔍</button>
-
-  </div>
-</div>
-  <div class="registro-wrapper">
-  <div class="boton-registrarse-superior">
-    <button onclick="mostrarFormulario()">Registrarse</button>
-    <button onclick="cerrarSesion()">Cerrar sesión</button>
-  </div>
-
-  <div id="formulario" class="formulario-google oculto">
-    <h2>Regístrate o Inicia sesión</h2>
-    <form>
-      <input type="text" placeholder="Nombre completo" required>
-      <input type="email" placeholder="Correo electrónico" required>
-      <input type="password" placeholder="Contraseña" required>
-      <div class="formulario-botones">
-        <button type="submit">Registrarse</button>
-        <button type="button">Iniciar sesión</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-
-
+  
  <script src="script.js"></script>
 </div>
 </body>

@@ -32,42 +32,69 @@ header {
   text-shadow: 2px 2px 5px #000;
 }
 .menu {
-  background-color:midnightblue;
-  position: sticky;
+  position: fixed;
   top: 0;
-  width: 100%;
-  z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-}
-
-.menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 15px 0;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-}
-
-.menu a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1em;
-  padding: 10px 20px;
-  border-radius: 6px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(15px);
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
 
-.menu a:hover {
-  background-color: #00c853; 
-  color: #000000;
-  box-shadow: 0 0 10px #00e676;
-  transform: scale(1.05);
+.menu:hover {
+  background: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 6px 30px rgba(255, 215, 0, 0.2);
 }
 
+.menu ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
+.menu li {
+  margin: 0 20px;
+}
 
+.menu a {
+  display: block;
+  padding: 20px 25px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ffd700, #ff6b35);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform: translateX(-50%);
+}
+
+.menu a:hover {
+  color: #ffd700;
+  transform: translateY(-2px);
+  text-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+}
+
+.menu a:hover::before {
+  width: 100%;
+}
 .formulario-contacto {
   background-color: white;
   color: black;

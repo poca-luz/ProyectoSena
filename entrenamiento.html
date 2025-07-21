@@ -25,22 +25,19 @@
    <div id="form-datos" class="formulario-datos">
   <h2>Datos personales</h2>
   <form onsubmit="return mostrarEntrenamiento()">
-     <select id="sexo" required>
-      <option value="">Seleccione sexo</option>
-      <option value="hombre">Hombre</option>
-      <option value="mujer">Mujer</option>
-    </select>
     <select id="sexo" required>
       <option value="">Seleccione sexo</option>
       <option value="hombre">Hombre</option>
       <option value="mujer">Mujer</option>
     </select>
+
     <select id="objetivo" required>
       <option value="">Objetivo de entrenamiento</option>
       <option value="perder grasa">Perder grasa</option>
       <option value="ganar masa muscular">Ganar masa muscular</option>
       <option value="mantenerse en forma">Mantenerse en forma</option>
     </select>
+
     <button type="submit">Continuar</button>
   </form>
 </div>
@@ -206,21 +203,311 @@
 
   <div class="bloque-entrenamiento" id="hombre-mantenerse en forma">
     <h2>Entrenamiento para HOMBRES que quieren MANTENERSE EN FORMA</h2>
+
+    <h3>🎯 Objetivo</h3>
+    <p>Este plan está diseñado para hombres que ya tienen una condición física aceptable y desean mantener su peso, fuerza y resistencia sin grandes cambios. Es ideal para quien quiere un estilo de vida activo y saludable sin objetivos extremos.</p>
+
+    <h3>⚖️ Principios del mantenimiento</h3>
+    <ul>
+      <li>Entrena 3-4 veces por semana de forma consistente.</li>
+      <li>Combina cardio moderado con ejercicios de fuerza.</li>
+      <li>Mantén un equilibrio entre intensidad y recuperación.</li>
+      <li>Varía los ejercicios para evitar el aburrimiento.</li>
+      <li>Escucha a tu cuerpo y ajusta según cómo te sientas.</li>
+    </ul>
+
+    <h3>🏃‍♂️ Rutina semanal balanceada</h3>
+    <ul>
+      <li><strong>Día 1:</strong> Cardio moderado + core
+        <ul>
+          <li>Trote ligero o caminata rápida – 25 min</li>
+          <li>Plancha – 3x45s</li>
+          <li>Crunches – 3x20</li>
+          <li>Bicicleta abdominal – 3x30s</li>
+        </ul>
+      </li>
+      <li><strong>Día 2:</strong> Fuerza tren superior
+        <ul>
+          <li>Flexiones – 3x12</li>
+          <li>Fondos en silla – 3x10</li>
+          <li>Flexiones pike – 3x8</li>
+          <li>Plancha lateral – 2x30s cada lado</li>
+        </ul>
+      </li>
+      <li><strong>Día 3:</strong> Descanso activo (estiramientos, yoga, caminata)</li>
+      <li><strong>Día 4:</strong> Fuerza tren inferior
+        <ul>
+          <li>Sentadillas – 3x15</li>
+          <li>Zancadas – 3x10 cada pierna</li>
+          <li>Puente de glúteos – 3x12</li>
+          <li>Elevación de talones – 3x20</li>
+        </ul>
+      </li>
+      <li><strong>Día 5:</strong> Circuito completo (menor intensidad)
+        <ul>
+          <li>Jumping jacks – 2x30s</li>
+          <li>Sentadillas – 2x12</li>
+          <li>Flexiones – 2x10</li>
+          <li>Mountain climbers – 2x20s</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>🍎 Alimentación para mantenimiento</h3>
+    <ul>
+      <li>Come equilibradamente sin restricciones extremas.</li>
+      <li>Incluye todos los grupos alimenticios.</li>
+      <li>Permite ocasionalmente comidas menos saludables (80/20).</li>
+      <li>Mantén la hidratación constante.</li>
+      <li>Escucha las señales de hambre y saciedad de tu cuerpo.</li>
+    </ul>
+
+    <h3>💡 Consejos de lifestyle</h3>
+    <ul>
+      <li>Camina al menos 7,000-8,000 pasos diarios.</li>
+      <li>Usa las escaleras en lugar del ascensor.</li>
+      <li>Duerme 7-8 horas de calidad cada noche.</li>
+      <li>Maneja el estrés con técnicas de relajación.</li>
+      <li>Disfruta actividades recreativas (deportes, baile, etc.).</li>
+    </ul>
   </div>
 
   <div class="bloque-entrenamiento" id="mujer-perder grasa">
     <h2>Entrenamiento para MUJERES que quieren PERDER GRASA</h2>
+
+    <h3>🎯 Objetivo</h3>
+    <p>Este programa está especialmente diseñado para mujeres que desean reducir grasa corporal, tonificar su figura y mejorar su resistencia cardiovascular, adaptándose a las características fisiológicas femeninas.</p>
+
+    <h3>💃 Principios específicos para mujeres</h3>
+    <ul>
+      <li>Combina cardio de baja y alta intensidad.</li>
+      <li>Incluye ejercicios para fortalecer el core y glúteos.</li>
+      <li>Adapta la intensidad según el ciclo menstrual.</li>
+      <li>Enfócate en movimientos funcionales y naturales.</li>
+      <li>Prioriza la consistencia sobre la intensidad extrema.</li>
+    </ul>
+
+    <h3>🏃‍♀️ Rutina semanal para quemar grasa</h3>
+    <ul>
+      <li><strong>Día 1:</strong> HIIT femenino
+        <ul>
+          <li>Sentadillas con salto – 4x15</li>
+          <li>Burpees modificados – 3x12</li>
+          <li>Mountain climbers – 4x30s</li>
+          <li>Jumping jacks – 4x45s</li>
+        </ul>
+      </li>
+      <li><strong>Día 2:</strong> Tonificación tren inferior
+        <ul>
+          <li>Sentadillas sumo – 4x15</li>
+          <li>Zancadas laterales – 3x12 cada lado</li>
+          <li>Puente de glúteos – 4x18</li>
+          <li>Elevación lateral de piernas – 3x15 cada lado</li>
+        </ul>
+      </li>
+      <li><strong>Día 3:</strong> Cardio moderado + core
+        <ul>
+          <li>Caminata rápida/trote – 30 min</li>
+          <li>Plancha – 3x40s</li>
+          <li>Crunches bicicleta – 3x25</li>
+          <li>Elevación de piernas – 3x15</li>
+        </ul>
+      </li>
+      <li><strong>Día 4:</strong> Tren superior + flexibilidad
+        <ul>
+          <li>Flexiones en rodillas – 3x12</li>
+          <li>Flexiones pike – 3x8</li>
+          <li>Plancha lateral – 3x30s cada lado</li>
+          <li>Estiramientos completos – 15 min</li>
+        </ul>
+      </li>
+      <li><strong>Día 5:</strong> Circuito quemagrasa
+        <ul>
+          <li>Sentadillas – 45s</li>
+          <li>Flexiones – 30s</li>
+          <li>Jumping jacks – 45s</li>
+          <li>Plancha – 30s</li>
+          <li>Descanso – 1 min (repetir 4 rondas)</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>🥗 Nutrición para mujeres que quieren perder grasa</h3>
+    <ul>
+      <li>Crea un déficit calórico moderado (300-500 cal/día).</li>
+      <li>No hagas dietas extremas que afecten el ciclo hormonal.</li>
+      <li>Incluye hierro (carne roja, espinacas, lentejas).</li>
+      <li>Consume calcio (lácteos, brócoli, almendras).</li>
+      <li>Bebe té verde y mucha agua para acelerar el metabolismo.</li>
+      <li>Come proteína en cada comida (huevos, pollo, pescado, legumbres).</li>
+    </ul>
+
+    <h3>🧠 Tips específicos para mujeres</h3>
+    <ul>
+      <li>Durante la menstruación, reduce la intensidad y haz más estiramientos.</li>
+      <li>En la fase ovulatoria, aprovecha para entrenamientos más intensos.</li>
+      <li>No te obsesiones con la báscula; mide también contornos.</li>
+      <li>Duerme al menos 7-8 horas para regular hormonas.</li>
+      <li>Maneja el estrés con yoga, meditación o actividades relajantes.</li>
+    </ul>
+
+    <h3>🎥 Video recomendado</h3>
+    <p><a href="https://www.youtube.com/watch?v=gC_L9qAHVJ8" target="_blank">
+      Rutina HIIT para mujeres - Quemar grasa en casa
+    </a></p>
   </div>
 
   <div class="bloque-entrenamiento" id="mujer-ganar masa muscular">
     <h2>Entrenamiento para MUJERES que quieren GANAR MASA MUSCULAR</h2>
+
+    <h3>🎯 Objetivo</h3>
+    <p>Este programa está diseñado para mujeres que desean aumentar su masa muscular, crear curvas definidas y conseguir un físico fuerte y atlético. Desmitifica el miedo a "ponerse muy grande" y se enfoca en crear un cuerpo tonificado y poderoso.</p>
+
+    <h3>💪 Principios para ganar músculo femenino</h3>
+    <ul>
+      <li>Entrena con intensidad 4-5 veces por semana.</li>
+      <li>Aplica sobrecarga progresiva consistentemente.</li>
+      <li>Enfócate especialmente en glúteos, piernas y core.</li>
+      <li>No temas los ejercicios de fuerza - no te harán "masculina".</li>
+      <li>Combina ejercicios compuestos con trabajo de aislamiento.</li>
+    </ul>
+
+    <h3>🏋️‍♀️ Rutina semanal para ganar masa</h3>
+    <ul>
+      <li><strong>Día 1:</strong> Glúteos y piernas
+        <ul>
+          <li>Sentadillas profundas – 4x12</li>
+          <li>Zancadas caminando – 4x10 cada pierna</li>
+          <li>Puente de glúteos (con peso) – 4x15</li>
+          <li>Sentadilla sumo – 3x12</li>
+          <li>Elevación lateral de piernas – 3x15 cada lado</li>
+        </ul>
+      </li>
+      <li><strong>Día 2:</strong> Tren superior
+        <ul>
+          <li>Flexiones (progresión) – 4x10-12</li>
+          <li>Flexiones pike – 3x8</li>
+          <li>Fondos en silla – 3x12</li>
+          <li>Flexiones diamante – 3x8</li>
+          <li>Plancha a flexión – 3x10</li>
+        </ul>
+      </li>
+      <li><strong>Día 3:</strong> Core y estabilidad
+        <ul>
+          <li>Plancha – 4x50s</li>
+          <li>Plancha lateral – 3x40s cada lado</li>
+          <li>Crunches con piernas elevadas – 4x20</li>
+          <li>Plancha con toques – 3x30s</li>
+          <li>Dead bug – 3x12 cada lado</li>
+        </ul>
+      </li>
+      <li><strong>Día 4:</strong> Glúteos intensivo
+        <ul>
+          <li>Hip thrust (sin peso) – 4x20</li>
+          <li>Sentadilla búlgara – 3x12 cada pierna</li>
+          <li>Peso muerto rumano (con mochila) – 4x15</li>
+          <li>Caminata lateral en cuclillas – 3x15 cada lado</li>
+          <li>Patadas de glúteo – 3x15 cada pierna</li>
+        </ul>
+      </li>
+      <li><strong>Día 5:</strong> Circuito de fuerza
+        <ul>
+          <li>Burpees – 4x12</li>
+          <li>Sentadillas con salto – 3x15</li>
+          <li>Flexiones explosivas – 3x8</li>
+          <li>Mountain climbers – 4x40s</li>
+          <li>Plancha con salto – 3x10</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>🍽️ Alimentación para ganar masa muscular</h3>
+    <ul>
+      <li>Come en superávit calórico (200-400 calorías extra al día).</li>
+      <li>Consume 1.6-2.2g de proteína por kg de peso corporal.</li>
+      <li>No elimines carbohidratos - son necesarios para el crecimiento.</li>
+      <li>Include grasas saludables (aguacate, frutos secos, aceite de oliva).</li>
+      <li>Come cada 3-4 horas para mantener el cuerpo nutrido.</li>
+      <li>Toma un batido post-entreno con proteína y carbos.</li>
+    </ul>
+
+    <h3>⭐ Suplementos recomendados para mujeres</h3>
+    <ul>
+      <li><strong>Proteína en polvo:</strong> facilita llegar a los requerimientos diarios.</li>
+      <li><strong>Creatina monohidrato:</strong> mejora fuerza y recuperación (3-5g/día).</li>
+      <li><strong>Multivitamínico:</strong> asegura micronutrientes esenciales.</li>
+      <li><strong>Hierro:</strong> especialmente importante para mujeres en edad reproductiva.</li>
+    </ul>
+
+    <h3>💡 Mitos derribados</h3>
+    <ul>
+      <li>❌ "Las pesas me harán ver masculina" - FALSO. Las mujeres no tienen suficiente testosterona.</li>
+      <li>❌ "Solo debo hacer cardio" - FALSO. El músculo acelera el metabolismo.</li>
+      <li>❌ "Los glúteos crecen solo con sentadillas" - FALSO. Necesitas variedad de ejercicios.</li>
+      <li>✅ El músculo te dará curvas definidas y un metabolismo más rápido.</li>
+    </ul>
+
+    <h3>🎥 Video recomendado</h3>
+    <p><a href="https://www.youtube.com/watch?v=2lTSwqBdMlE" target="_blank">
+      Rutina de fuerza para mujeres - Ganar masa muscular en casa
+    </a></p>
   </div>
 
   <div class="bloque-entrenamiento" id="mujer-mantenerse en forma">
     <h2>Entrenamiento para MUJERES que quieren MANTENERSE EN FORMA</h2>
-  </div>
 
-</div>
+    <h3>🎯 Objetivo</h3>
+    <p>Este programa está diseñado para mujeres que desean mantener un peso saludable, conservar su energía y flexibilidad, y disfrutar de un estilo de vida activo sin presión por cambios drásticos. Ideal para mantener la salud y el bienestar general.</p>
+
+    <h3>🌸 Principios del bienestar femenino</h3>
+    <ul>
+      <li>Entrena 3-4 veces por semana con intensidad moderada.</li>
+      <li>Incluye ejercicios que mejoren la postura y flexibilidad.</li>
+      <li>Adapta el entrenamiento según tu estado de ánimo y energía.</li>
+      <li>Combina cardio suave con fortalecimiento muscular.</li>
+      <li>Prioriza actividades que disfrutes para mantener la consistencia.</li>
+    </ul>
+
+    <h3>🧘‍♀️ Rutina semanal balanceada</h3>
+    <ul>
+      <li><strong>Día 1:</strong> Cardio suave + flexibilidad
+        <ul>
+          <li>Caminata energética – 25 min</li>
+          <li>Estiramientos dinámicos – 10 min</li>
+          <li>Yoga flow básico – 15 min</li>
+          <li>Respiración consciente – 5 min</li>
+        </ul>
+      </li>
+      <li><strong>Día 2:</strong> Tonificación suave
+        <ul>
+          <li>Sentadillas (ritmo moderado) – 3x12</li>
+          <li>Flexiones en rodillas – 3x10</li>
+          <li>Plancha – 3x30s</li>
+          <li>Puente de glúteos – 3x15</li>
+        </ul>
+      </li>
+      <li><strong>Día 3:</strong> Actividad recreativa
+        <ul>
+          <li>Baile libre – 20-30 min</li>
+          <li>Natación (si es posible) – 20 min</li>
+          <li>Juegos deportivos casuales</li>
+          <li>Caminata en la naturaleza</li>
+        </ul>
+      </li>
+      <li><strong>Día 4:</strong> Core y postura
+        <ul>
+          <li>Plancha lateral – 2x25s cada lado</li>
+          <li>Gato-vaca (yoga) – 2x12</li>
+          <li>Bird dog – 2x10 cada lado</li>
+          <li>Estiramientos de espalda – 15 min</li>
+        </ul>
+      </li>
+      <li><strong>Día 5:</strong> Circuito ligero
+        <ul>
+          <li>Marcha en el sitio – 2 min</li>
+          <li>Sentadillas suaves – 1x15</li>
+          <li>Elevación de brazos – 1x20</li>
+          <li>Rotaciones de cadera – 1x15 cada dirección</li>
 
    <script src="script.js"></script>
 </body>
