@@ -1,133 +1,390 @@
-   body {
-      margin: 0;
-      background: url("img/fondo3.jpg") no-repeat center center fixed;
-      background-size: cover;
-      font-family: Arial, sans-serif;
-      color: white;
-    }
-    .titulo-seccion {
-      text-align: center;
-      font-size: 3.5rem;
-      margin-top: 50px;
-      color: #ff1744;
-      text-shadow: 2px 2px 8px black;
-      animation: entrada 1s ease-out;
-    }
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .contenido-alimentacion {
-      max-width: 1000px;
-      margin: 40px auto;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(-45deg, #1a1a1a, #2d1b69, #ff1744, #000000);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    .bloque-comida {
-      margin-bottom: 40px;
-    }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    .bloque-comida h2 {
-      color: #ff5252;
-      margin-bottom: 10px;
-    }
+        /* Navegación mejorada */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
 
-    .bloque-comida p {
-      line-height: 1.6;
-    }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
 
-    .bloque-comida img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-top: 15px;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-    }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff1744, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 23, 68, 0.5);
+        }
 
-    @media (max-width: 768px) {
-      .contenido-alimentacion {
-        padding: 20px;
-        margin: 20px;
-      }
-    }
-.menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(15px);
-  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
-}
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-.menu:hover {
-  background: rgba(0, 0, 0, 0.95);
-  box-shadow: 0 6px 30px rgba(255, 215, 0, 0.2);
-}
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-.menu ul {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
 
-.menu li {
-  margin: 0 20px;
-}
+        .nav-menu a:hover::before {
+            left: 100%;
+        }
 
-.menu a {
-  display: block;
-  padding: 20px 25px;
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  transition: all 0.3s ease;
-}
+        .nav-menu a:hover {
+            background: rgba(255, 23, 68, 0.2);
+            transform: translateY(-2px);
+        }
 
-.menu a::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #ffd700, #ff6b35);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transform: translateX(-50%);
-}
+        /* Hero Section para Nutrición */
+        .hero-nutricion {
+            padding: 120px 2rem 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-.menu a:hover {
-  color: #ffd700;
-  transform: translateY(-2px);
-  text-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
-}
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff1744, #ffd700, #ff1744);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 50px rgba(255, 23, 68, 0.5);
+            margin-bottom: 1rem;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
 
-.menu a:hover::before {
-  width: 100%;
-}
-.recomendacion-final {
-  background: #00c853;
-  color: black;
-  padding: 15px;
-  margin-top: 40px;
-  text-align: center;
-  font-size: 1.3em;
-  font-weight: bold;
-  animation: parpadeo 1.5s infinite;
-  border-radius: 10px;
-}
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 20px rgba(255, 23, 68, 0.5)); }
+            100% { filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.8)); }
+        }
 
-@keyframes parpadeo {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Contenedor principal de alimentación */
+        .contenido-alimentacion {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Grid de comidas */
+        .comidas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .bloque-comida {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bloque-comida::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 23, 68, 0.1), transparent);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .bloque-comida:hover::before {
+            animation: rotateGradient 2s linear infinite;
+            opacity: 1;
+        }
+
+        @keyframes rotateGradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .bloque-comida:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 23, 68, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .comida-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+        }
+
+        .bloque-comida h2 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .bloque-comida p {
+            line-height: 1.6;
+            opacity: 0.9;
+            text-align: justify;
+        }
+
+        /* Sección de consejos nutricionales */
+        .consejos-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .consejos-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ff1744;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
+        }
+
+        .consejos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .consejo-item {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        .consejo-item:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateX(10px);
+        }
+
+        .consejo-item h3 {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .consejo-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Sección de hidratación */
+        .hidratacion-section {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 150, 255, 0.1), rgba(0, 255, 200, 0.1));
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .hidratacion-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #00bcd4;
+            text-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+        }
+
+        .hidratacion-section h2 {
+            color: #00bcd4;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        /* Botón de regreso */
+        .btn-regresar {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #ff1744, #ff5722);
+            border: none;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.3);
+            z-index: 999;
+        }
+
+        .btn-regresar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 23, 68, 0.5);
+        }
+
+        /* Recomendación final mejorada */
+        .recomendacion-final {
+            background: linear-gradient(45deg, #00c853, #4caf50);
+            color: white;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 200, 83, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recomendacion-final::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Animaciones de entrada */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .comidas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .consejos-section {
+                padding: 1.5rem;
+            }
+            
+            .btn-regresar {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        /* Hamburger menu para móvil */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 2rem 0;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+        }

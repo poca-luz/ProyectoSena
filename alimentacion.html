@@ -16,34 +16,109 @@
   }
     </style>
     <nav class="menu">
-        <ul>
-            <li><a href="./principal.html">Principal</a></li>
-            <li><a href="./entrenamiento.html">Entrenamiento(H-M)</a></li>
-            <li><a href="./alimentacion.html">Dieta Alimenticia(H-M)</a></li>
-            <li><a href="./contacto.html">Contactanos</a></li>
-        </ul>
+   <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">NO LIMITS</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="./principal.html">Inicio</a></li>
+                <li><a href="./entrenamiento.html">Entrenamientos</a></li>
+                <li><a href="./alimentacion.html">Nutrición</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+        </div>
     </nav>
-     <h1 class="titulo-seccion">Plan de Alimentación Saludable</h1>
 
-  <section class="contenido-alimentacion">
+    <!-- Hero Section -->
+    <section class="hero-nutricion">
+        <h1 class="hero-title">NUTRICIÓN</h1>
+        <p class="hero-subtitle">Alimenta tu progreso con los mejores planes nutricionales diseñados para maximizar tus resultados</p>
+    </section>
 
-    <div class="bloque-comida">
-      <h2>Desayuno</h2>
-      <p>Una combinación ideal incluye: avena con frutas, claras de huevo, batido de proteína o tostadas integrales con aguacate. El desayuno debe ser energético y balanceado para empezar bien el día.</p>
-    </div>
-    <div class="bloque-comida">
-      <h2>Almuerzo</h2>
-      <p>El almuerzo debe incluir carbohidratos complejos, vegetales y una buena fuente de proteína: arroz integral, pollo a la plancha, ensalada fresca con aceite de oliva y batata al vapor.</p>
-    </div>
-    <div class="bloque-comida">
-      <h2>Cena</h2>
-      <p>Para la noche: verduras al vapor, pescado al horno, puré de papa ligera o una crema de vegetales. No comas en exceso y evita azúcares por la noche.</p>
-    </div>
-    <div class="bloque-comida">
-      <h2>Snacks</h2>
-      <p>Frutas, nueces, yogurt griego sin azúcar o batidos naturales entre comidas. Son clave para mantener la energía y no llegar con hambre a la siguiente comida.</p>
+    <!-- Contenido principal -->
+    <div class="contenido-alimentacion">
+        <!-- Grid de comidas principales -->
+        <div class="comidas-grid">
+            <div class="bloque-comida fade-in">
+                <div class="comida-icon">🌅</div>
+                <h2>Desayuno Energético</h2>
+                <p>Comienza el día con fuerza: avena con frutas frescas, claras de huevo revueltas, batido de proteína con plátano, o tostadas integrales con aguacate. Tu desayuno debe ser el combustible perfecto para activar tu metabolismo y darte la energía necesaria para enfrentar el día con determinación.</p>
+            </div>
+            
+            <div class="bloque-comida fade-in">
+                <div class="comida-icon">☀️</div>
+                <h2>Almuerzo Balanceado</h2>
+                <p>La comida más importante del día debe incluir carbohidratos complejos, proteínas magras y vegetales frescos: arroz integral o quinoa, pollo a la plancha o salmón, ensalada variada con aceite de oliva extra virgen, y batata al vapor. Este equilibrio perfecto te mantendrá satisfecho y con energía constante.</p>
+            </div>
+            
+            <div class="bloque-comida fade-in">
+                <div class="comida-icon">🌙</div>
+                <h2>Cena Reparadora</h2>
+                <p>Por la noche tu cuerpo necesita nutrientes que faciliten la recuperación: verduras al vapor, pescado al horno rico en omega-3, puré de coliflor ligero o crema de vegetales casera. Evita los carbohidratos pesados y azúcares refinados para un descanso reparador y una mejor composición corporal.</p>
+            </div>
+            
+            <div class="bloque-comida fade-in">
+                <div class="comida-icon">🥜</div>
+                <h2>Snacks Inteligentes</h2>
+                <p>Mantén tu metabolismo activo entre comidas principales: frutas de temporada, frutos secos naturales, yogurt griego sin azúcar, batidos naturales de vegetales verdes, o barras de proteína caseras. Estos snacks te ayudarán a controlar el apetito y mantener niveles estables de energía durante todo el día.</p>
+            </div>
+        </div>
+
+        <!-- Sección de hidratación -->
+        <div class="hidratacion-section fade-in">
+            <div class="hidratacion-icon">💧</div>
+            <h2>Hidratación Óptima</h2>
+            <p>El agua es fundamental para tu rendimiento. Consume al menos 2-3 litros diarios, más si entrenas intensamente. Agrega rodajas de limón, pepino o menta para variar el sabor. Una hidratación adecuada mejora tu digestión, transporta nutrientes y elimina toxinas eficientemente.</p>
+        </div>
+
+        <!-- Consejos nutricionales -->
+        <div class="consejos-section fade-in">
+            <h2 class="consejos-title">Consejos de Oro para Tu Nutrición</h2>
+            <div class="consejos-grid">
+                <div class="consejo-item">
+                    <h3>🍽️ Control de Porciones</h3>
+                    <p>Usa tu mano como referencia: proteína del tamaño de tu palma, carbohidratos en tu puño cerrado, grasas saludables en tu pulgar.</p>
+                </div>
+                
+                <div class="consejo-item">
+                    <h3>⏰ Timing Perfecto</h3>
+                    <p>Come cada 3-4 horas para mantener tu metabolismo activo. Consume proteína dentro de 30 minutos post-entrenamiento.</p>
+                </div>
+                
+                <div class="consejo-item">
+                    <h3>🌈 Variedad Colorida</h3>
+                    <p>Incluye frutas y vegetales de diferentes colores para asegurar un amplio espectro de vitaminas y antioxidantes.</p>
+                </div>
+                
+                <div class="consejo-item">
+                    <h3>🥑 Grasas Saludables</h3>
+                    <p>Incluye aguacate, frutos secos, aceite de oliva y pescados grasos para la salud hormonal y absorción de vitaminas.</p>
+                </div>
+                
+                <div class="consejo-item">
+                    <h3>🍚 Carbohidratos Inteligentes</h3>
+                    <p>Elige carbohidratos complejos: avena, quinoa, batata, arroz integral. Te darán energía sostenida sin picos de insulina.</p>
+                </div>
+                
+                <div class="consejo-item">
+                    <h3>📝 Planificación</h3>
+                    <p>Prepara tus comidas con anticipación. La preparación es clave para mantener una alimentación consistente y saludable.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recomendación final -->
+        <div class="recomendacion-final fade-in">
+            <h3>¡RECUERDA!</h3>
+            <p>La consistencia es más importante que la perfección. Cada comida es una oportunidad para nutrir tu cuerpo y acercarte a tus objetivos. ¡Tu disciplina de hoy es tu éxito de mañana!</p>
+        </div>
     </div>
 
-  </section>
+    <!-- Botón de regreso -->
+    <button class="btn-regresar" onclick="window.history.back()" title="Volver">
+        ← 
+    </button>
+     <script src="script.js"></script>
 </body>
 </html>

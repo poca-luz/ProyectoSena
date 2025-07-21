@@ -15,32 +15,147 @@
     background-size: cover;
   }
     </style>
-    <nav class="menu">
-        <ul>
-            <li><a href="./principal.html">Principal</a></li>
-            <li><a href="./entrenamiento.html">Entrenamiento(H-M)</a></li>
-            <li><a href="./alimentacion.html">Dieta Alimenticia(H-M)</a></li>
-            <li><a href="./contacto.html">Contactanos</a></li>
-        </ul>
+    <!-- Partículas de fondo -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">NO LIMITS</div>
+            <ul class="nav-menu">
+                <li><a href="./principal.html">Inicio</a></li>
+                <li><a href="./entrenamiento.html">Entrenamientos</a></li>
+                <li><a href="./alimentacion.html">Nutrición</a></li>
+                <li><a href="./contacto.html" style="color: #ff1744;">Contacto</a></li>
+            </ul>
+            <div class="user-section">
+                <a href="./principal.html" class="back-btn">
+                    ⬅️ Volver al Inicio
+                </a>
+            </div>
+        </div>
     </nav>
-   <h1 class="titulo-contacto">📬 CONTÁCTANOS</h1>
 
-  <section class="tarjeta-contacto">
-    <div class="contacto-info">
-      <h2>📞 Teléfonos</h2>
-      <ul>
-        <li>314 597 7554</li>
-        <li>321 728 2802</li>
-        <li>311 335 5753</li>
-      </ul>
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <div class="contact-container">
+            <!-- Hero de contacto -->
+            <section class="contact-hero">
+                <h1 class="contact-title">CONTÁCTANOS</h1>
+                <p class="contact-subtitle">
+                    ¿Tienes preguntas sobre nuestros entrenamientos? ¿Necesitas asesoría personalizada?<br>
+                    Estamos aquí para ayudarte a superar todos tus límites.
+                </p>
+            </section>
 
-      <h2>📧 Correos electrónicos</h2>
-      <ul>
-        <li>juanmanuelsalgado555@gmail.com</li>
-        <li>db669842@gmail.com</li>
-        <li>jaramillovanesa416@gmail.com</li>
-      </ul>
-    </div>
-  </section>
+            <!-- Grid de contacto -->
+            <div class="contact-grid">
+                <!-- Formulario de contacto -->
+                <section class="contact-form-section">
+                    <h2 class="form-title">
+                        📝 Envíanos un mensaje
+                    </h2>
+                    <form id="contactForm" onsubmit="enviarMensaje(event)">
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="tu.email@ejemplo.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefono">Teléfono (opcional)</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="+57 123 456 7890">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="asunto">Asunto</label>
+                            <input type="text" id="asunto" name="asunto" placeholder="¿En qué podemos ayudarte?" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más detalles sobre tu consulta..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            🚀 Enviar mensaje
+                        </button>
+                    </form>
+                    <div id="successMessage" class="success-message">
+                        ¡Mensaje enviado correctamente! Te contactaremos pronto.
+                    </div>
+                </section>
+
+                <!-- Información de contacto -->
+                <section class="contact-info-section">
+                    <div class="contact-card">
+                        <h3>📞 Teléfonos</h3>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span class="contact-text">+57 314 597 7554</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span class="contact-text">+57 321 728 2802</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span class="contact-text">+57 311 335 5753</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3>📧 Correos electrónicos</h3>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <span class="contact-text">juanmanuelsalgado555@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <span class="contact-text">db669842@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <span class="contact-text">jaramillovanesa416@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3>⏰ Horarios de atención</h3>
+                        <div class="contact-item">
+                            <span class="contact-icon">🌅</span>
+                            <span class="contact-text">Lunes a Viernes: 6:00 AM - 10:00 PM</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🏋️</span>
+                            <span class="contact-text">Sábados: 7:00 AM - 8:00 PM</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🏃</span>
+                            <span class="contact-text">Domingos: 8:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección de ubicación -->
+                <section class="location-section">
+                    <h3 class="location-title">
+                        📍 ¿Dónde nos encuentras?
+                    </h3>
+                    <p class="location-text">
+                        Nuestro equipo de expertos está disponible para brindarte la mejor asesoría en fitness y nutrición. 
+                        Contáctanos a través de cualquiera de nuestros canales y comienza tu transformación hoy mismo.
+                        <br><br>
+                        <strong>¡Tu límite es solo el comienzo de tus posibilidades!</strong>
+                    </p>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
