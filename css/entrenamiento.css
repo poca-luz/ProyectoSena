@@ -1,467 +1,732 @@
-/* Reset y configuración base */
+/**
+ * NO LIMITS - Aplicación de Fitness
+ * CSS principal organizado y optimizado
+ */
+
+/* ========================================
+   1. VARIABLES CSS (Custom Properties)
+   ======================================== */
+:root {
+  /* Colores principales */
+  --color-primary: #ffd700;
+  --color-primary-light: #ffed4e;
+  --color-accent: #ff6b6b;
+  --color-accent-light: #ff8e8e;
+  --color-text: #fff;
+  --color-text-secondary: rgba(255, 255, 255, 0.9);
+  --color-dark: #333;
+  --color-overlay: rgba(0, 0, 0, 0.9);
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-gold: linear-gradient(45deg, #ffd700, #ffed4e);
+  --gradient-accent: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  --gradient-night: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  
+  /* Sombras */
+  --shadow-light: 0 10px 30px rgba(255, 215, 0, 0.3);
+  --shadow-medium: 0 20px 40px rgba(0, 0, 0, 0.3);
+  --shadow-heavy: 0 25px 50px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(255, 215, 0, 0.5);
+  
+  /* Espaciado */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Tipografía */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-size-sm: 1.1rem;
+  --font-size-md: 1.5rem;
+  --font-size-lg: 1.8rem;
+  --font-size-xl: 2.2rem;
+  --font-size-xxl: 2.5rem;
+  
+  /* Bordes */
+  --border-radius-sm: 15px;
+  --border-radius-md: 20px;
+  --border-radius-full: 50px;
+  --border-glass: 1px solid rgba(255, 255, 255, 0.2);
+  
+  /* Efectos */
+  --backdrop-blur: blur(20px);
+  --backdrop-blur-heavy: blur(25px);
+  --transition-fast: all 0.3s ease;
+  --transition-medium: all 0.6s ease;
+  --transition-slow: all 0.8s ease;
+}
+
+/* ========================================
+   2. RESET Y CONFIGURACIONES BASE
+   ======================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Arial', 'Roboto', sans-serif;
-  background-image: url("img/fondo3.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  min-height: 100vh;
-  color: #ffffff;
-  overflow-x: hidden;
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* Overlay para mejor legibilidad */
-body::before {
-  content: '';
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--gradient-primary);
+  min-height: 100vh;
+  color: var(--color-text);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   3. EFECTOS VISUALES Y PARTÍCULAS
+   ======================================== */
+.particles {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: -1;
-  backdrop-filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Navegación moderna */
-.menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(15px);
-  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
-}
-
-.menu:hover {
-  background: rgba(0, 0, 0, 0.95);
-  box-shadow: 0 6px 30px rgba(255, 215, 0, 0.2);
-}
-
-.menu ul {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu li {
-  margin: 0 20px;
-}
-
-.menu a {
-  display: block;
-  padding: 20px 25px;
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.menu a::before {
-  content: '';
+.particle {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #ffd700, #ff6b35);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
 }
 
-.menu a:hover {
-  color: #ffd700;
-  transform: translateY(-2px);
-  text-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+/* ========================================
+   4. ANIMACIONES Y KEYFRAMES
+   ======================================== */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+    opacity: 0.3; 
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+    opacity: 1; 
+  }
 }
 
-.menu a:hover::before {
-  width: 100%;
-}
-
-/* Contenedor principal */
-main {
-  margin-top: 80px;
-  padding: 40px 20px;
-}
-
-/* Formulario de datos personales */
-.formulario-datos {
-  max-width: 500px;
-  margin: 50px auto;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  animation: slideInUp 0.8s ease-out;
-}
-
-@keyframes slideInUp {
+@keyframes slideUp {
   from {
+    transform: translateY(30px);
     opacity: 0;
-    transform: translateY(50px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-.formulario-datos h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2.2em;
-  background: linear-gradient(135deg, #ffd700, #ff6b35);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
-  font-weight: 700;
-}
-
-.formulario-datos form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.formulario-datos select {
-  padding: 15px 20px;
-  border: 2px solid rgba(255, 215, 0, 0.3);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.formulario-datos select:focus {
-  outline: none;
-  border-color: #ffd700;
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-  transform: scale(1.02);
-}
-
-.formulario-datos select option {
-  background: #1a1a1a;
-  color: #ffffff;
-  padding: 10px;
-}
-
-.formulario-datos button {
-  padding: 18px 30px;
-  background: linear-gradient(135deg, #ff6b35, #ffd700);
-  color: #000;
-  border: none;
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
-  margin-top: 10px;
-}
-
-.formulario-datos button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 35px rgba(255, 107, 53, 0.6);
-  background: linear-gradient(135deg, #ffd700, #ff6b35);
-}
-
-.formulario-datos button:active {
-  transform: translateY(-1px) scale(1.02);
-}
-
-/* Contenido de entrenamiento */
-#contenido-entrenamiento {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  
-}
-
-.bloque-entrenamiento {
-  background: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(25px);
-  border-radius: 20px;
-  margin: 30px 0;
-  padding: 40px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 215, 0, 0.15);
-  position: relative;
-  overflow: hidden;
-  animation: fadeIn 1s ease-out;
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
 
-.bloque-entrenamiento::before {
+@keyframes bounceIn {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ========================================
+   5. NAVEGACIÓN
+   ======================================== */
+.navbar {
+  background: var(--color-overlay);
+  backdrop-filter: var(--backdrop-blur);
+  padding: var(--spacing-sm) 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: var(--transition-fast);
+  border-bottom: var(--border-glass);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--spacing-lg);
+}
+
+.logo {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--color-primary);
+  text-shadow: var(--shadow-glow);
+  transition: var(--transition-fast);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-lg);
+}
+
+.nav-menu a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  position: relative;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--spacing-xs);
+}
+
+.nav-menu a:hover {
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.nav-menu a::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 215, 0, 0.05), 
-    transparent
-  );
-  transition: left 0.8s ease;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: var(--transition-fast);
+  transform: translateX(-50%);
+  border-radius: 2px;
 }
 
-.bloque-entrenamiento:hover::before {
-  left: 100%;
+.nav-menu a:hover::after {
+  width: 80%;
+}
+
+/* ========================================
+   6. LAYOUT PRINCIPAL
+   ======================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  position: relative;
+  z-index: 1;
+  margin-top: 80px;
+}
+
+/* ========================================
+   7. FORMULARIOS
+   ======================================== */
+.formulario-datos {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: var(--backdrop-blur);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-lg) auto;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: var(--shadow-medium);
+  border: var(--border-glass);
+  transform: translateY(30px);
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+}
+
+.formulario-datos h2 {
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-primary);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+/* ========================================
+   8. ELEMENTOS DE FORMULARIO
+   ======================================== */
+select, 
+button, 
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-dark);
+  transition: var(--transition-fast);
+  font-family: inherit;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+  transform: scale(1.02);
+  box-shadow: var(--shadow-light);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+button {
+  background: var(--gradient-gold);
+  color: var(--color-dark);
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: var(--spacing-sm);
+  position: relative;
+  overflow: hidden;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: var(--transition-medium);
+  transform: translate(-50%, -50%);
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ========================================
+   9. CONTENIDO DE ENTRENAMIENTOS
+   ======================================== */
+.contenido-entrenamiento {
+  display: none;
+  animation: fadeIn 0.8s ease;
+}
+
+.contenido-entrenamiento.visible {
+  display: block;
+}
+
+.bloque-entrenamiento {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: var(--backdrop-blur);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-lg) 0;
+  box-shadow: var(--shadow-medium);
+  border: var(--border-glass);
+  transform: translateX(-50px);
+  opacity: 0;
+  animation: slideInLeft 0.8s ease forwards;
+  transition: var(--transition-fast);
 }
 
 .bloque-entrenamiento:hover {
-  border-color: rgba(255, 215, 0, 0.4);
-  box-shadow: 0 20px 50px rgba(255, 215, 0, 0.1);
   transform: translateY(-5px);
+  box-shadow: var(--shadow-heavy);
+  border-color: rgba(255, 215, 0, 0.3);
 }
 
+.bloque-entrenamiento.oculto {
+  display: none;
+}
+
+/* ========================================
+   10. TIPOGRAFÍA DE CONTENIDO
+   ======================================== */
 .bloque-entrenamiento h2 {
-  font-size: 2.5em;
-  margin-bottom: 25px;
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
   text-align: center;
-  background: linear-gradient(135deg, #ffd700, #ff6b35, #ffd700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 800;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: var(--shadow-glow);
   position: relative;
 }
 
+.bloque-entrenamiento h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 100px;
+  height: 3px;
+  background: var(--gradient-gold);
+  transform: translateX(-50%);
+  border-radius: 5px;
+}
+
 .bloque-entrenamiento h3 {
-  color: #ffd700;
-  font-size: 1.4em;
-  margin: 30px 0 15px 0;
-  font-weight: 700;
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.bloque-entrenamiento h3::before {
-  content: '';
-  width: 4px;
-  height: 25px;
-  background: linear-gradient(45deg, #ff6b35, #ffd700);
-  border-radius: 2px;
-}
-
 .bloque-entrenamiento p {
-  font-size: 1.1em;
+  font-size: var(--font-size-sm);
   line-height: 1.8;
-  margin-bottom: 20px;
-  color: rgba(255, 255, 255, 0.9);
-  text-align: justify;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-secondary);
 }
 
 .bloque-entrenamiento ul {
-  margin: 15px 0 25px 20px;
-  color: rgba(255, 255, 255, 0.95);
+  margin-left: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 .bloque-entrenamiento li {
-  margin-bottom: 12px;
-  font-size: 1.05em;
+  margin-bottom: 0.8rem;
   line-height: 1.6;
+  color: var(--color-text-secondary);
   position: relative;
-  transition: all 0.3s ease;
 }
 
-.bloque-entrenamiento li:hover {
-  color: #ffd700;
-  transform: translateX(10px);
-}
-
-.bloque-entrenamiento li::marker {
-  color: #ff6b35;
+.bloque-entrenamiento li::before {
+  content: '✨';
+  position: absolute;
+  left: -25px;
 }
 
 .bloque-entrenamiento ul ul {
-  margin-top: 10px;
-  margin-left: 20px;
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
 }
 
-.bloque-entrenamiento ul ul li {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1em;
+.bloque-entrenamiento ul ul li::before {
+  content: '💪';
 }
 
-.bloque-entrenamiento strong {
-  color: #ffd700;
-  font-weight: 700;
-}
-
-/* Enlaces de videos */
-.bloque-entrenamiento a {
-  color: #ff6b35;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 12px 20px;
-  background: rgba(255, 107, 53, 0.1);
-  border-radius: 8px;
-  border: 2px solid rgba(255, 107, 53, 0.3);
+/* ========================================
+   11. ENLACES Y BOTONES ESPECIALES
+   ======================================== */
+.video-link {
   display: inline-block;
-  margin-top: 15px;
-  transition: all 0.3s ease;
+  background: var(--gradient-accent);
+  color: white;
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-full);
+  font-weight: bold;
+  transition: var(--transition-fast);
+  margin-top: var(--spacing-sm);
   position: relative;
   overflow: hidden;
 }
 
-.bloque-entrenamiento a::before {
-  content: '▶';
-  margin-right: 8px;
-  font-size: 1.1em;
+.video-link::before {
+  content: '▶️';
+  margin-right: 10px;
 }
 
-.bloque-entrenamiento a:hover {
-  background: rgba(255, 107, 53, 0.2);
-  color: #ffffff;
-  border-color: #ff6b35;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+.video-link:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
 }
 
-/* Clase oculto */
-.oculto {
+.btn-regreso {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--gradient-gold);
+  color: var(--color-dark);
+  border: none;
+  padding: var(--spacing-sm);
+  border-radius: 50%;
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition-fast);
+  z-index: 1000;
+  width: 60px;
+  height: 60px;
   display: none;
 }
 
-/* Efectos especiales */
-.bloque-entrenamiento::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, 
-    rgba(255, 215, 0, 0.05) 0%, 
-    transparent 70%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+.btn-regreso.visible {
+  display: block;
+  animation: bounceIn 0.6s ease;
 }
 
-.bloque-entrenamiento:hover::after {
+.btn-regreso:hover {
+  transform: scale(1.1) rotate(360deg);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+}
+
+/* ========================================
+   12. ESTADOS DE CARGA
+   ======================================== */
+.loading {
+  display: none;
+  text-align: center;
+  padding: var(--spacing-lg);
+}
+
+.loading.active {
+  display: block;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto var(--spacing-sm);
+}
+
+.loading-text {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* ========================================
+   13. MODO NOCTURNO
+   ======================================== */
+.night-mode {
+  background: var(--gradient-night);
+}
+
+.night-mode .navbar {
+  background: rgba(52, 73, 94, 0.9);
+}
+
+.night-mode .formulario-datos,
+.night-mode .bloque-entrenamiento {
+  background: rgba(44, 62, 80, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   14. UTILIDADES
+   ======================================== */
+.oculto {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.animate-in {
   opacity: 1;
+  transform: translateY(0);
 }
 
-/* Responsive Design */
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.shadow-glow {
+  text-shadow: var(--shadow-glow);
+}
+
+/* ========================================
+   15. RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+  
+  .nav-container {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+/* Móviles */
 @media (max-width: 768px) {
-  .menu ul {
+  :root {
+    --font-size-xxl: 2rem;
+    --font-size-xl: 1.8rem;
+    --font-size-lg: 1.6rem;
+    --spacing-xl: 2rem;
+  }
+  
+  .nav-menu {
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.95);
+    gap: var(--spacing-sm);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-overlay);
+    backdrop-filter: var(--backdrop-blur);
+    padding: var(--spacing-sm);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: var(--transition-fast);
   }
   
-  .menu li {
-    margin: 0;
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
   }
   
-  .menu a {
-    padding: 15px 20px;
-    font-size: 14px;
-  }
-  
-  .formulario-datos {
-    margin: 20px;
-    padding: 25px;
-  }
-  
-  .formulario-datos h2 {
-    font-size: 1.8em;
-  }
-  
+  .formulario-datos, 
   .bloque-entrenamiento {
-    margin: 20px 0;
-    padding: 25px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-sm);
   }
   
-  .bloque-entrenamiento h2 {
-    font-size: 2em;
+  .btn-regreso {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
   }
   
-  main {
-    margin-top: 60px;
-    padding: 20px 10px;
+  .particle {
+    display: none; /* Ocultar partículas en móviles para mejor rendimiento */
   }
 }
 
+/* Móviles pequeños */
 @media (max-width: 480px) {
-  .formulario-datos {
-    margin: 10px;
-    padding: 20px;
-  }
-  
+  .formulario-datos,
   .bloque-entrenamiento {
-    padding: 20px;
+    padding: var(--spacing-sm);
+    margin: var(--spacing-xs);
   }
   
-  .bloque-entrenamiento h2 {
-    font-size: 1.6em;
+  .nav-container {
+    padding: 0 var(--spacing-xs);
   }
   
-  .bloque-entrenamiento h3 {
-    font-size: 1.2em;
+  .logo {
+    font-size: var(--font-size-md);
   }
 }
 
-/* Animaciones adicionales */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+/* ========================================
+   16. PREFERENCIAS DE USUARIO
+   ======================================== */
+
+/* Reducir movimiento para usuarios que lo prefieren */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .particle {
+    animation: none;
+  }
 }
 
-.formulario-datos button:focus {
-  animation: pulse 0.6s ease-in-out;
+/* Modo de alto contraste */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text: #ffffff;
+    --color-text-secondary: #ffffff;
+    --border-glass: 2px solid #ffffff;
+  }
 }
 
-/* Scrollbar personalizado */
-::-webkit-scrollbar {
-  width: 12px;
+/* ========================================
+   17. ESTADOS DE FOCUS PARA ACCESIBILIDAD
+   ======================================== */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #ff6b35, #ffd700);
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #ffd700, #ff6b35);
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
